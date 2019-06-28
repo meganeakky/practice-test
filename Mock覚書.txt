@@ -1,0 +1,73 @@
+昨日うまく実装できなかったmockが実装できたので覚書
+実装できなかった理由は
+バージョンと使っているアノテーションがあっていないというもの。
+
+モックを使った手順として
+①.ダミーにするクラスのモック化
+②.テストするクラスへ1の注入
+③.テストが呼び出されるたびに1、2の初期化
+④.ダミークラスのメソッドが実行されたときに出力する値の設定
+⑤.4の値を渡された際のテストクラスのふるまいを確認
+
+今回引っかかってしまったのが③の部分で、
+テストのたびにinitMocksメソッドを使い
+MockとInjectの初期化を事前にする必要があった。
+そのため
+@Beforeアノテーションを使っていたが、
+JUnit4までのアノテーションで5からは
+@BeforeEachアノテーションを使わなければならなかった。
+修正を加えると正常に動いた。
+
+
+実際のコードは以下。
+
+今回は
+1～100の乱数を出力する①NumberGeneratorと
+その値を1.2の/2する②HalfCalculatorを作成。
+テストするクラスは②HalfCalculator。
+そのため①NumberGeneratorにダミーの値(20)を出力するようにし
+10.0が返ってくるかテスト。
+
+
+
+package com.example.mock.practice;
+
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+class HalfCalculatorTest {
+
+//	①
+	@Spy
+	NumberGenerator ng = new NumberGenerator();
+
+//	②
+	@InjectMocks
+	HalfCalculator hcMock = new HalfCalculator();
+
+//	③
+//	@BeforeはJUnit4までなので注意！！
+	@BeforeEach //
+	public void setup() {
+		MockitoAnnotations.initMocks(this);
+	}
+
+	@Test
+	public void ac2test() {
+
+//		④
+		doReturn(20).when(ng).random2();
+
+//		⑤
+		assertThat(hcMock.halfCalculator(),is(10.0));
+	}
+
+}
+
+

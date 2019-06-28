@@ -1,5 +1,7 @@
 package com.example.mock.practice;
 
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -9,29 +11,29 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 class HalfCalculatorTest {
 
+//	①
 	@Spy
 	NumberGenerator ng = new NumberGenerator();
 
+//	②
 	@InjectMocks
 	HalfCalculator hcMock = new HalfCalculator();
 
+//	③
 //	@BeforeはJUnit4までなので注意！！
-	@BeforeEach
+	@BeforeEach //
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 	}
 
 	@Test
 	public void ac2test() {
-		when(ng.random2()).thenThrow(new NullPointerException());
-		try {
-			System.out.println(ng.random2());
 
-		}catch (Exception e) {
-			System.out.println("cause NullPointerException");
-		}
+//		④
+		doReturn(20).when(ng).random2();
 
-//		assertThat(hcMock.halfCalculator(),is(10.0));
+//		⑤
+		assertThat(hcMock.halfCalculator(),is(10.0));
 	}
 
 }
