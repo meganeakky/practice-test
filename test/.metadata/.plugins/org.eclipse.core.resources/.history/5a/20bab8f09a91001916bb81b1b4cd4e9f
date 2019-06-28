@@ -1,0 +1,12 @@
+package jUnit_practice;
+
+public class Execution {
+
+	public static void main(String[] args) {
+		Execution e = new Execution();
+		BitChecker bc = new BitChecker();
+		bc.checkListMaker(8);
+
+	}
+
+}

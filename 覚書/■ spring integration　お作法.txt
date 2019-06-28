@@ -1,0 +1,35 @@
+¡ spring integration@‚¨ì–@
+
+‘—‚é‚Æ‚«‚ÍMessageChannel
+ó‚¯æ‚é‚Æ‚«‚ÍPolableChannel
+
+// in
+ @Bean
+    public MessageChannel inputChannel() {
+        return new DirectChannel();
+    }
+    
+// MessageChannel
+public interface MessageChannel {
+
+    boolean send(Message message);
+
+    boolean send(Message message, long timeout);
+}
+
+
+
+// out
+@Bean
+	public PollableChannel output() {
+		return new QueueChannel();
+	}
+	
+// PolableChannel
+public interface PollableChannel extends MessageChannel {
+
+    Message<?> receive();
+
+    Message<?> receive(long timeout);
+
+}

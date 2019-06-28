@@ -1,0 +1,16 @@
+<template>
+	<descriptor
+		id="org.springframework.integration.sts.template.standalone.simple"
+		name="Spring Integration Project (Standalone) - Simple"
+		kind="template"
+		version="1.0.1.RELEASE"
+		requiresbundle="org.eclipse.m2e.core"
+		category="Integration">
+		<description>
+			Creates a Spring Integration project that runs as a standalone Java
+			application using core components only.
+		</description>
+	</descriptor>
+	<project path="" />
+	<json path="wizard.json" />
+</template>

@@ -1,0 +1,5 @@
+package com.example.integration.endpoint.service;
+
+public class HelloWorldService {
+
+}

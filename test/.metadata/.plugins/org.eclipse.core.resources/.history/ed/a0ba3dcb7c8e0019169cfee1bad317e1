@@ -1,0 +1,8 @@
+package jUnit_practice;
+
+public class BinaryCheckerException extends RuntimeException{
+	private BinaryCheckerException(Object) {
+
+	}
+
+}

@@ -1,0 +1,26 @@
+単体テスト実装
+
+■pom.xmlにjUnitやmockitoを追加
+（例）
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>org.hamcrest</groupId>
+    <artifactId>hamcrest-library</artifactId>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <scope>test</scope>
+</dependency>
+
+
+■DBのセットアップ
+
+テストで利用するDBの設定
+

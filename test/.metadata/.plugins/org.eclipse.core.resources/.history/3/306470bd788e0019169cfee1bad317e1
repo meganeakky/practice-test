@@ -1,0 +1,53 @@
+package jUnit_practice;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BinaryChecker{
+	public static void main(String[] args) {
+		BinaryChecker bc = new BinaryChecker();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			System.out.print("整数を入力：");
+			int num = Integer.parseInt(new String(br.readLine()));
+			List<String> list = bc.checkListMaker(num);
+			for(int i = 0;i<list.size();i++) {
+				System.out.println(list.get(i));
+			}
+
+		} catch (NumberFormatException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+	}
+
+	private List<String> checkListMaker(int n) {
+		List<String> checkList = new ArrayList<>();
+		int a = 5;
+		int b = 2;
+		int c = 1;
+
+		System.out.println(n & a);
+		System.out.println(n & b);
+		System.out.println(n & c);
+
+		if((n & a) == 1) {
+			checkList.add("checkA");
+		}
+		if((n & b) == 1) {
+			checkList.add("checkB");
+		}
+		if((n & c) == 1) {
+			checkList.add("checkC");
+		}
+		return checkList;
+	}
+
+
+}

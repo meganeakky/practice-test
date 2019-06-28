@@ -1,0 +1,10 @@
+package com.example.integration.endpoint.service;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class HelloWorldService {
+
+	@ServiceActivator(inputChannel = "inputChannel", outputChannel = "outputChannel")
+
+}

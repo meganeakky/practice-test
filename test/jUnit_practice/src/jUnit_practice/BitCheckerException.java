@@ -1,0 +1,12 @@
+package jUnit_practice;
+
+public class BitCheckerException extends RuntimeException{
+	//warningを回避するための宣言
+	private static final long serialVersionUID = 1L;
+
+	// コンストラクタ
+	BitCheckerException(String errorMessage){
+		super(errorMessage);
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.example.integration.channel;
+
+public class HelloWorldChannel {
+
+}

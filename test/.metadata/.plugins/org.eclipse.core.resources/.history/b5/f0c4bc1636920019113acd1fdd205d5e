@@ -1,0 +1,19 @@
+package test_project_ver4;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import jUnit_practice.BitCheckerException;
+
+public class BitCheckerExceptionTest {
+
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+
+	@Test
+	public void bitCheckerExceptionTest_case4() {
+		expectedException.expect(BitCheckerException.class);
+		expectedException.expectMessage("扱えない整数が入力されました");
+	}
+}
